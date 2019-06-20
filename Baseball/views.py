@@ -20,9 +20,7 @@ con = psycopg2.connect(database = dbname, user = 'matthew',password='postsqlgres
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html",
-       title = 'Home', user = { 'nickname': 'Miguel' },
-       )
+    return render_template("input.html")
 
 @app.route('/db')
 def birth_page():
@@ -67,7 +65,7 @@ def OptimizeTrip(example):
     toproadtrips = pd.DataFrame()
 
     while toproadtrips.shape[0] < 5 and example.shape[0] > 0:
-        tempexample = example.loc[example.eucdis == example.eucdis.min()].nlargest(1,columns=['eucdis'])
+        tempexample = example.loc[example.relativevalue == example.relativevalue.max()].nlargest(1,columns=['eucdis'])
         
         toproadtrips = toproadtrips.append(tempexample)
 
@@ -106,7 +104,7 @@ def cesareans_output():
   maxb = float(request.args.get('maxb'))
   avgtemp = float(request.args.get('avgtemp'))
   avgtempimp = float(request.args.get('avgtempimp'))
-  pricing = request.args.get('try')
+  pricing = int(request.args.get('try'))
   pimp = float(request.args.get('pimp'))
 
 
@@ -115,19 +113,32 @@ def cesareans_output():
   locs = request.args.getlist('loclist')
   locs2 = request.args.getlist('example')
   #print(len(locs))
+  
+  pricecheck = 'checked'
+  if pricing == 1:
+    pricing = 'median'
+    check = 0
+    query1 = "SELECT * FROM augroadtripsupdateddaily WHERE medprice < %s" % (str(maxb) )
+  else:
+    pricing = 'lowest'
+    pricecheck =''
+    check = 1 
+    query1 = "SELECT * FROM augroadtripsupdateddaily WHERE lowprice < %s" % (str(maxb) )
   #print(((qimp**(1/3))*25)+50)
-  p = dict(numgames = numgames, numgamesimp = numgamesimp**(1/3)*50, daygames = daygames*100, daygamesimp = daygamesimp**(1/3)*50, qimp = qimp, dimp = dimp**(1/3)*50, mintemp = 0, maxtemp = 0, maxb = maxb,avgtemp=avgtemp,avgtempimp = avgtempimp, pimp = pimp)
+  p = dict(numgames = numgames, numgamesimp = numgamesimp**(1/3)*50, daygames = daygames*100, daygamesimp = daygamesimp**(1/3)*50, qimp = qimp, dimp = dimp**(1/3)*50, mintemp = 0, maxtemp = 0, maxb = maxb,avgtemp=avgtemp,avgtempimp = avgtempimp, pimp = pimp, pricecheck=1-check, pricing = pricing)
   qimp = ((qimp-50)/25)**3
   avgtemp = (avgtemp-32) * 5/9
   avgtempimp = (avgtempimp/50)**3
+  pimp = int(10**(pimp/50+1))
+  
+  #query1 = "SELECT * FROM julyroadtrips"
+  #query1 = "SELECT * FROM julyroadtrips3 WHERE min_temp > %s AND max_temp < %s AND lowprice < %s" % (str(mintemp), str(maxtemp), str(maxb) )
+  #query1 = "SELECT * FROM julyroadtrips3 WHERE lowprice < %s" % (str(maxb) )
+
+
+  #query1 = "SELECT * FROM augroadtripsupdateddaily WHERE lowprice < %s" % (str(maxb) )
 
   
-  query1 = "SELECT * FROM julyroadtrips"
-  #query1 = "SELECT * FROM julyroadtrips3 WHERE min_temp > %s AND max_temp < %s AND lowprice < %s" % (str(mintemp), str(maxtemp), str(maxb) )
-  query1 = "SELECT * FROM julyroadtrips3 WHERE lowprice < %s" % (str(maxb) )
-
-  query1 = "SELECT * FROM augroadtripsupdateddaily WHERE lowprice < %s" % (str(maxb) )
-
 
   query_results1 = pd.read_sql_query(query1,con)
   #days_norm = query_results1.total_days.max() - query_results1.total_days.min()
@@ -156,9 +167,11 @@ def cesareans_output():
   #query_results1['eucdis'] = np.sqrt( numgamesimp * ((query_results1.total_games - numgames)/games_norm)**2 + daygamesimp * ((query_results1.total_days - daygames)/days_norm)**2  + dimp * (query_results1.total_miles/miles_norm)**2  + qimp * (query_results1.game_quality_norm)**2 + gimp * (quer/y_results1.game_importance_norm)**2 )
 
 
-  query_results2 = query_results1.nsmallest(50, columns = ['eucdis'])
-  
-  query_results2['relativevalue'] = query_results2.predicted_med / query_results2.medprice
+  query_results2 = query_results1.nsmallest(pimp, columns = ['eucdis'])
+  if check == 0:
+    query_results2['relativevalue'] = query_results2.predicted_med / query_results2.medprice
+  else:
+    query_results2['relativevalue'] = query_results2.predicted_low / query_results2.lowprice
   #query_results2 = query_results2.nsmallest(100, columns = ['relativevalue'])
   #print(query_results2.relativevalue)
   query_results2 = OptimizeTrip(query_results2)
@@ -196,11 +209,17 @@ def cesareans_output():
     
     #print(query_results.shape[0])
     for i in range(0,query_results.shape[0]):
-      tempgames.append(dict(hometeam=query_results.iloc[i]['hometeam'],tavg=round(query_results.iloc[i]['tavg']*9/5 + 32,2), awayteam=query_results.iloc[i]['awayteam'], date2=(query_results.iloc[i]['date2'].weekday_name + ' ' + str(query_results.iloc[i]['date2'].month) + '/' + str(query_results.iloc[i]['date2'].day) + ' at ' + str(AddHour(query_results.iloc[i]['date2'].hour-12)) + ':' + AddTens(str(query_results.iloc[i]['date2'].minute)) + ' pm'), homewin = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['win'].values[0], homeloss = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['loss'].values[0], awaywin = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['win'].values[0], awayloss = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['loss'].values[0], url = query_results.iloc[i]['url']))
+      tempgames.append(dict(hometeam=query_results.iloc[i]['hometeam'],tavg=round(query_results.iloc[i]['tavg']*9/5 + 32,1), awayteam=query_results.iloc[i]['awayteam'], date2=(query_results.iloc[i]['date2'].weekday_name + ' ' + str(query_results.iloc[i]['date2'].month) + '/' + str(query_results.iloc[i]['date2'].day) + ' at ' + str(AddHour(query_results.iloc[i]['date2'].hour-12)) + ':' + AddTens(str(query_results.iloc[i]['date2'].minute)) + ' pm'), homewin = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['win'].values[0], homeloss = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['loss'].values[0], awaywin = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['win'].values[0], awayloss = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['loss'].values[0], url = query_results.iloc[i]['url']))
     bigoutput += [tempgames]
     #roadtripmeta.append(dict(total_miles = row.total_miles, lowprice = row.lowprice, medprice = row.medprice, relativevalue = round(row.eucdis,2), eucdis = row.eucdis, day_value = round(row.day_games_value_med,2),quality_value = round(row.quality_value_med,2),loc_value = round(row.location_value_med,2),expected_med = round(row.predicted_med,2),weather_value = round(row.weather_value_med,2)))
-    roadtripmeta.append(dict(total_miles = row.total_miles, lowprice = row.lowprice, medprice = row.medprice, relativevalue = round(row.eucdis,2), eucdis = row.eucdis, day_value = SavingsToString(round(row.day_games_value_med,2)),quality_value = SavingsToString(round(row.quality_value_med,2)),loc_value = SavingsToString(round(row.location_value_med,2)),expected_med = round(row.predicted_med,2),weather_value = SavingsToString(round(row.weather_value_med,2))))
-    tempcolors.append(dict(day = IndividualColor(row.day_games_value_med),quality = IndividualColor(row.quality_value_med),loc = IndividualColor(row.location_value_med),med = IndividualColor(row.medprice - row.predicted_med),weather = IndividualColor(row.weather_value_med)))
+    if check == 0:
+      roadtripmeta.append(dict(total_games = row.total_games, total_miles = row.total_miles, price = row.medprice, day_value = SavingsToString(round(row.day_games_value_med,2)),quality_value = SavingsToString(round(row.quality_value_med,2)),loc_value = SavingsToString(round(row.location_value_med,2)),expected_price = round(row.predicted_med,2),weather_value = SavingsToString(round(row.weather_value_med,2)),findme = row.quality_value_med))
+      tempcolors.append(dict(day = IndividualColor(row.day_games_value_med),quality = IndividualColor(row.quality_value_med),loc = IndividualColor(row.location_value_med),med = IndividualColor(row.medprice - row.predicted_med),weather = IndividualColor(row.weather_value_med)))
+    else:
+      roadtripmeta.append(dict(total_games = row.total_games, total_miles = row.total_miles, price = row.lowprice, day_value = SavingsToString(round(row.day_games_value_low,2)),quality_value = SavingsToString(round(row.quality_value_low,2)),loc_value = SavingsToString(round(row.location_value_low,2)),expected_price = round(row.predicted_low,2),weather_value = SavingsToString(round(row.weather_value_low,2)),findme = row.quality_value_med))
+      tempcolors.append(dict(day = IndividualColor(row.day_games_value_low),quality = IndividualColor(row.quality_value_low),loc = IndividualColor(row.location_value_low),med = IndividualColor(row.lowprice - row.predicted_low),weather = IndividualColor(row.weather_value_low)))
+    #roadtripmeta.append(dict(total_games = row.total_games, total_miles = row.total_miles, lowprice = row.lowprice, medprice = row.medprice, relativevalue = round(row.eucdis,2), eucdis = row.eucdis, day_value = SavingsToString(round(row.day_games_value_med,2)),quality_value = SavingsToString(round(row.quality_value_med,2)),loc_value = SavingsToString(round(row.location_value_med,2)),expected_med = round(row.predicted_med,2),weather_value = SavingsToString(round(row.weather_value_med,2))))
+    #tempcolors.append(dict(day = IndividualColor(row.day_games_value_med),quality = IndividualColor(row.quality_value_med),loc = IndividualColor(row.location_value_med),med = IndividualColor(row.medprice - row.predicted_med),weather = IndividualColor(row.weather_value_med)))
     #print('home: ' + str(row.game_quality_h))
     #print('away: ' + str(row.game_quality_a))
     #print(.1 * abs(qimp) * ((1-(qimp > 0)*2)-(row.game_quality_a -row.game_quality_h)/query_results1.game_quality_h.std())**2)
@@ -301,7 +320,7 @@ def output_similar():
     for i in range(0,query_results.shape[0]):
       tempgames.append(dict(hometeam=query_results.iloc[i]['hometeam'],tavg=query_results.iloc[i]['tavg'], awayteam=query_results.iloc[i]['awayteam'], date2=(query_results.iloc[i]['date2'].weekday_name + ' ' + str(query_results.iloc[i]['date2'].month) + '/' + str(query_results.iloc[i]['date2'].day) + ' at ' + str(query_results.iloc[i]['date2'].hour-12) + ':' + AddTens(str(query_results.iloc[i]['date2'].minute)) + ' pm'), homewin = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['win'].values[0], homeloss = standings.loc[standings.team==query_results.iloc[i]['hometeam']]['loss'].values[0], awaywin = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['win'].values[0], awayloss = standings.loc[standings.team==query_results.iloc[i]['awayteam']]['loss'].values[0]))
     bigoutput += [tempgames]
-    roadtripmeta.append(dict(lowprice = row.lowprice, medprice = row.medprice, total_miles = total_miles, quality_value = quality_value))
+    roadtripmeta.append(dict(total_games = row.total_games,lowprice = row.lowprice, medprice = row.medprice, total_miles = total_miles, quality_value = quality_value))
 
     #print(tempgames)
 
