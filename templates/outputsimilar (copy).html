@@ -34,28 +34,20 @@
   <body>
 
 <style>
-
-body {
-  background-image: url("/static/retryheader2.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #bbbbbb; 
-  font-family: Helvetica;
-}
  .main {
  background-color: rgba(255, 255, 255, 0.5);
  margin-top: 50px;
  padding-bottom: 50px;
  }
  .main h1 {
- font-size: 5em;
+ font-size: 3.5em;
  font-family: Arial;
  color: #2E3759;
  }
  .main h2 {
  font-size: 2em;
  font-family: Arial;
- color: #808080;
+ color: #2E3759;
  }
  .main h3 {
  font-size: 2em;
@@ -72,9 +64,7 @@ ul {
 }
 li {
   display: inline-block;
-  vertical-align: middle;
 }
-
 input[type='checkbox'] {
     -webkit-appearance:none;
     width:20px;
@@ -83,112 +73,52 @@ input[type='checkbox'] {
     border-radius:5px;
     border:2px solid #555;
 }
-
 input[type='checkbox']:checked {
     background: #27db42;
 }
-input[type='checkbox']#try {
-    -webkit-appearance:none;
-    width:0px;
-    height:0px;
-    
-    border-radius:0px;
-    border:0px solid #555;
-}
-input[type='checkbox']#try:checked {
-    background: #000000;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-table#inputtable, td#input {
-  border:none;
-  vertical-align: middle;
-}
-img.resize {
-  max-width:40%;
-  max-height:40%;
-}
-
-
-th, td {
-  padding: 5px;
-}
 
 </style>
-<center>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<p style="font-size: 140px;font-family: Impact; color: #000000; font-style: bold;line-height: .85;text-shadow: 1px 1px #303030;">  
-BALLPARK 
-<br>
-HUNTR
-</p>
 
-<div class="container">
+BALLPARK HUNTR
+
+
+ 
+
+    <div class="container">
       <div class="starter-template">
-        <h3>Possible Road Trips ({{roadtripmeta[0]['total_miles']}} miles long):
-        <br>
-        
+        <h3>Results:</h3>
         <br>
       </div>
-      
-      {% for kk in range(0, length) %}
-             <li>   
-        <table class="table table-hover" border: 10px" style="float: left">
+      {% for kk in range(0,length) %}
         
-        <tr style="text-align:center"><th>Game</th><th>Date</th><th>Average <br> Temperature (F)</th></tr>
+        <table class="table table-hover">
         
-        <br>
-        
+        <tr><th>Home Team</th><th>Record</th><th>Away Team</th><th>Record</th><th>Date</th><th>Average Temperature (C)</th></tr>
+        Low Price: {{roadtripmeta[kk]['lowprice']}} Med Price {{roadtripmeta[kk]['medprice']}}
+
         {% for birth in bigoutput[kk] %}
-        <tr style="text-align:center"><td>  <a href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
+        
+
+        <tr><td>{{ birth['hometeam'] }}</td> <td>{{birth['homewin']}} - {{birth['homeloss']}} </td> <td>{{ birth['awayteam']}}</td><td>{{birth['awaywin']}} - {{birth['awayloss']}} </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
         {% endfor %}
         </table>
-
-          &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-
-          {% for line in range(0,roadtripmeta[kk]['total_games']) %}
-          <br>
-          {% endfor %}
-          
-        <br>
-        <br>
-          
-        
-        
-        <br>
-
-        <b>
-          Price:
-        </b>
-        <br>
-        ${{roadtripmeta[kk]['lowprice']}} (Lowest) 
-        <br>
-        ${{roadtripmeta[kk]['medprice']}} (Median)
-        
+        <br><br>
+        <div class="container">
+        <form action="/outputsimilar" method="get">
+          <div class="form-group">
+            <input type="hidden" name="total_miles" value = {{roadtripmeta[kk]['total_miles']}}>
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="quality_value" value = {{roadtripmeta[kk]['quality_value']}}>
+          </div>
+          <button type="submit" class="btn btn-primary">Find similar itineraries!</button>
+        </form>
     </div>
-    </li>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
         {% endfor %}
-      <div class="container">
-        <form action="/input" method="get">
-         <button type="submit" class="btn btn-primary">Find a new trip</button>         
+      
 
-         
-    </div>
-</center>
-    
+
+     </div><!-- /.container -->
 
 
      

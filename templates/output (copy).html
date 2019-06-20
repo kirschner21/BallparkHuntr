@@ -72,7 +72,6 @@ ul {
 }
 li {
   display: inline-block;
-  vertical-align: middle;
 }
 
 input[type='checkbox'] {
@@ -83,20 +82,8 @@ input[type='checkbox'] {
     border-radius:5px;
     border:2px solid #555;
 }
-
 input[type='checkbox']:checked {
     background: #27db42;
-}
-input[type='checkbox']#try {
-    -webkit-appearance:none;
-    width:0px;
-    height:0px;
-    
-    border-radius:0px;
-    border:0px solid #555;
-}
-input[type='checkbox']#try:checked {
-    background: #000000;
 }
 table, th, td {
   border: 1px solid black;
@@ -134,16 +121,77 @@ Pick your preferences:
 
 <br>
 
-<img src="/static/great2.jpg" align="right">
-
-
+<img src="/static/great.jpg" align="right" class="resize">
 <br><br>
-
-
 <div class="container">
         <form action="/output" method="get">
-          Which teams do you want to visit?
-           <table id = "inputtable">
+          
+         <table id = "inputtable">
+          <tr style="text-align:center">
+          <td id = "input">
+        
+            <label for="NumberofGames">Number of Games:</label>
+            </td>
+            <td id = "input">
+            <span id="demo"></span>  <br>
+            <input type="range" name="numgames" class="slider" id="NumberofGames" min="2" max = "9"   value = {{p['numgames']}}>  
+          </td>
+        
+           <td id = "input">
+        
+          <!---</div>
+          <div class="form-group"> -->
+            <label for="NumberofGamesImp">Importance</label><br>
+            <input type="range" name="numgamesimp" class="slider" id="NumberofGamesImp" min="0" max="100" value={{p['numgamesimp']}}>
+          
+        </td>
+      
+        </tr>
+        </table>
+
+          <div class="slidecontainer">
+            <label for="AverageTemperature">Desired Temperature: </label>  <span id="demo2"> </span>  F
+            <input type="range" name="avgtemp" class="slider" id="AverageTemperature" min="40" max = "90"   value = {{p['avgtemp']}}>  
+            
+          <!---</div>
+          <div class="form-group"> -->
+            <label for="AverageTemperatureImp">Importance</label>
+            <input type="range" name="avgtempimp" class="slider" id="AverageTemperatureImp" min="0" max="100" value={{p['avgtempimp']}}>
+          </div>
+
+          <div class="form-group">
+            <label for="PercentDayGames">Percent Day Games</label>
+            <input type="range" name="daygames" class="slider" id="PercentDayGames" min = "0" max = "100" value = {{p['daygames']}}>
+          <!--</div>
+          <div class="form-group"> -->
+            <label for="PercentDayGamesImportance">Importance</label>
+            <input type="range" name="daygamesimp" class="slider" id="PercentDayGamesImportance" min = "0" max = "100" value = {{p['daygamesimp']}}>
+          </div>
+          <div class="form-group">
+            <label for="QualityImportance">Which team would you rather be better?</label> Home
+            <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = {{p['qimp']}}> Away
+          </div>
+          <div class="form-group">
+            <label for="DistanceImportance">How little do you want to travel?</label>
+            <input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = {{p['dimp']}}>
+          </div>
+          <!--
+          <div class="form-group">
+            <label for="MinTemperature">Minimum Temperature?</label>
+            <input type="text" name="mintemp" class="form-control" id="MinTemperature" placeholder={{p['mintemp']}} value = {{p['mintemp']}}>
+          </div>
+          <div class="form-group">
+            <label for="MaxTemperature">Maximum Temperature?</label>
+            <input type="text" name="maxtemp" class="form-control" id="MaxTemperature" placeholder={{p['maxtemp']}} value = {{p['maxtemp']}}>
+          </div>
+        -->
+          <div class="form-group">
+            <label for="MaxBudget">Max Budget?</label>
+            <input type="text" name="maxb" class="form-control" id="MaxBudget" placeholder={{p['maxb']}} value = {{p['maxb']}}>
+          </div>
+          <br>
+          <br>
+          <table id = "inputtable">
           <tr >
           <td id = "input">
           <li><label for = "check1"><input type="checkbox" name="loclist" value="oriole_park_at_camden_yards" id = "check1"  {{locdic['oriole_park_at_camden_yards']}} /> Baltimore Orioles </label></li>
@@ -155,13 +203,13 @@ Pick your preferences:
           <li><label for = "check3"><input type="checkbox" name="loclist" value="minute_maid_park" id = "check3" {{locdic['minute_maid_park']}}/> Houston Astros </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check4"><input type="checkbox" name="example" value="ALT" id = "check4" {{locdic['ALT']}}/> Atlanta Braves </label></li>
+          <li><label for = "check4"><input type="checkbox" name="example" value="ALT" id = "check4"/> Atlanta Braves </label></li>
           </td>
           <td id = "input">
           <li><label for = "check5"><input type="checkbox" name="loclist" value="wrigley_field" id = "check5" {{locdic['wrigley_field']}}/> Chicago Cubs </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check6"><input type="checkbox" name="example" value="ARZ" id = "check6" {{locdic['ARZ']}}/> Arizona Diamond Backs </label></li>
+          <li><label for = "check6"><input type="checkbox" name="example" value="ARZ" id = "check6"/> Arizona Diamond Backs </label></li>
           </td>
           </tr>
           <tr  >
@@ -181,7 +229,7 @@ Pick your preferences:
           <li><label for = "check11"><input type="checkbox" name="loclist" value="great_american_ball_park" id = "check11" {{locdic['great_american_ball_park']}}/> Cincinnati Reds </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check12"><input type="checkbox" name="example" value="COL" id = "check12" {{locdic['COL']}}/> Colorado Rockies </label></li>
+          <li><label for = "check12"><input type="checkbox" name="example" value="COL" id = "check12"/> Colorado Rockies </label></li>
           </td>
           </tr>
           <tr >
@@ -212,7 +260,7 @@ Pick your preferences:
           <li><label for = "check20"><input type="checkbox" name="loclist" value="kauffman_stadium" id = "check20" {{locdic['kauffman_stadium']}}/> Kansas City Royals </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check21"><input type="checkbox" name="example" value="SEA" id = "check21" {{locdic['SEA']}}/> Seattle Mariners </label></li>
+          <li><label for = "check21"><input type="checkbox" name="example" value="MIA" id = "check21"/> Seattle Mariners </label></li>
           </td>
           <td id = "input">
           <li><label for = "check22"><input type="checkbox" name="loclist" value="citizens_bank_park" id = "check22" {{locdic['citizens_bank_park']}}/> Philadelphia Phillies </label></li>
@@ -229,7 +277,7 @@ Pick your preferences:
           <li><label for = "check25"><input type="checkbox" name="loclist" value="rogers_centre" id = "check25" {{locdic['rogers_centre']}}/> Toronto Blue Jays </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check26"><input type="checkbox" name="example" value="MIN" id = "check26" {{locdic['MIN']}}/> Minnesota Twins </label></li>
+          <li><label for = "check26"><input type="checkbox" name="example" value="CLE" id = "check26"/> Minnesota Twins </label></li>
           </td>
           <td id = "input">
           <li><label for = "check27"><input type="checkbox" name="loclist" value="globe_life_park_in_arlington" id = "check27" {{locdic['globe_life_park_in_arlington']}}/> Texas Rangers </label></li>
@@ -245,146 +293,11 @@ Pick your preferences:
           </td>
         </tr>
       </table>
-
-      <br>
-      <br>
-
-
-
-         <table id = "inputtable">
-          <tr style="text-align:center">
-          <td id = "input">
-        
-            <label for="NumberofGames">How many games do you want to see?</label>
-            </td>
-            <td id = "input">
-            <span id="demo"></span> games  <br>
-            <input type="range" name="numgames" class="slider" id="NumberofGames" min="2" max = "9"   value = {{p['numgames']}}>  
-          </td>
-        
-           <td id = "input">
-        
-          <!---</div>
-          <div class="form-group"> -->
-            <label for="NumberofGamesImp">Importance?</label><br>
-           Low <input type="range" name="numgamesimp" class="slider" id="NumberofGamesImp" min="0" max="100" value={{p['numgamesimp']}}> High
-          
-        </td>
-      
-        </tr>
-
-
-          <tr style="text-align:center">
-          <td id = "input">
-          <label for="AverageTemperature"> What do you want the average temperature to be? </label> 
-          </td>
-          <td id = "input">
-           <span id="demo2"> </span>  F <br>
-            <input type="range" name="avgtemp" class="slider" id="AverageTemperature" min="55" max = "85"   value = {{p['avgtemp']}}>  
-          </td>
-          <td id = "input">
-          
-            <label for="AverageTemperatureImp">Importance?</label> <br>
-            Low<input type="range" name="avgtempimp" class="slider" id="AverageTemperatureImp" min="0" max="100" value={{p['avgtempimp']}}>High
-          </td>
-        </tr>
-        <tr style="text-align:center">
-          <td id = "input">
-          <label for="PercentDayGames">What percent of days during the day do you want to see?</label>
-        </td>
-          <td id = "input">
-            <span id="demo3"></span>  % <br>
-            <input type="range" name="daygames" class="slider" id="PercentDayGames" min = "0" max = "100" value = {{p['daygames']}}>
-          </td>
-          <td id = "input">
-          <label for="PercentDayGamesImportance">Importance?</label> <br>
-            Low<input type="range" name="daygamesimp" class="slider" id="PercentDayGamesImportance" min = "0" max = "100" value = {{p['daygamesimp']}}>High
-          </td>
-        </tr>
-        <tr style="text-align:center">
-        <td id = "input" colspan="2"> 
-            <label for="DistanceImportance">How important is it that the trip is short?</label>
-          </td>
-          <td id="input" >
-            Importance? <br>
-            Low<input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = {{p['dimp']}}>High
-          </td>
-        </tr>
-        <tr style="text-align:center">
-        <td id = "input" colspan="2">
-          <label for="QualityImportance">Which team would you rather be better?</label>
-        </td>
-        <td id = "input">
-            <br>
-            Away  <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = {{p['qimp']}}> Home
-          </td>
-        </tr>
-        
-
-        <tr style="text-align:center">
-          <td id="input">
-            Would you rather get what you want or a good deal?
-          </td>
-
-          <td id="input">
-            Preferences<input type="range" name="pimp" class="slider" id="PreferencesImportance" min = "0" max = "100" value = {{p['pimp']}}>Deal
-          </td>
-
-          <td id="input" >
-            <label for="MaxBudget">What's your maximum budget?</label>
-            <input type="text" name="maxb" class="form-control" id="MaxBudget" placeholder={{p['maxb']}} value = {{p['maxb']}}>
-          </td>
-
-        </tr>
-
-
-        <tr style="text-align:center">
-          <td id="input">
-            Sort by median or lowest Price?
-            <br> <br>
-           Lowest <input type="range" name="try" class="slider" id="trying" min = "0" max = "1"  value = {{p['pricecheck']}}> Median
-           
-           
-
-          </td>
-          <td id="input" colspan="2">
-            
-         <button type="submit" class="btn btn-primary">Find me games!</button>         
-
-          </td>
-
-        </tr>
-        </table>
-
-          
-            
-          <!---</div>
-          <div class="form-group"> -->
-          
-
-         
-          <!--</div>
-          <div class="form-group"> -->
-            
-          
-        <!--
-          <div class="form-group">
-            <label for="MinTemperature">Minimum Temperature?</label>
-            <input type="text" name="mintemp" class="form-control" id="MinTemperature" placeholder={{p['mintemp']}} value = {{p['mintemp']}}>
-          </div>
-          <div class="form-group">
-            <label for="MaxTemperature">Maximum Temperature?</label>
-            <input type="text" name="maxtemp" class="form-control" id="MaxTemperature" placeholder={{p['maxtemp']}} value = {{p['maxtemp']}}>
-          </div>
-        -->
-
-          <br>
-          <br>
-         
           <br>
 
         </table>
- 
+          <button type="submit" class="btn btn-primary">Find me games!</button>         
+
           <script>
           var slider2 = document.getElementById("AverageTemperature");
           var output2 = document.getElementById("demo2");
@@ -401,29 +314,20 @@ Pick your preferences:
           output.innerHTML = this.value;
           }
         </script>
-        <script>
-          var slider3 = document.getElementById("PercentDayGames");
-          var output3 = document.getElementById("demo3");
-          output3.innerHTML = slider3.value;
-          slider3.oninput = function() {
-          output3.innerHTML = this.value;
-          }
-        </script>
-        
+          
         </form>
     </div>
 
 <div class="container">
       <div class="starter-template">
-        <h3>Results sorted by  value of {{p['pricing']}} priced tickets: </h3>
+        <h3>Results:</h3>
         <br>
       </div>
-      
       {% for kk in range(0, length) %}
-             <li>   
-        <table class="table table-hover" border: 10px" style="float: left">
         
-        <tr style="text-align:center"><th>Game</th><th>Date</th><th>Average <br> Temperature (F)</th></tr>
+        <table class="table table-hover" border: 10px style="display: inline-block;">
+        
+        <tr style="text-align:center"><th>Game</th><th>Date</th><th>Average <br> Temperature (C)</th></tr>
         
         <br>
         
@@ -431,29 +335,11 @@ Pick your preferences:
         <tr style="text-align:center"><td>  <a href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
         {% endfor %}
         </table>
-
-          &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-
-          {% for line in range(0,roadtripmeta[kk]['total_games']-1) %}
-          <br>
-          {% endfor %}
-          
-            <b>
-          Trip Info:
-        </b>
         <br>
-        <br>
-          
-        Miles on the road:  {{roadtripmeta[kk]['total_miles']}}
-        
+        Cost: <font color={{colors[kk]['med']}}>$ {{roadtripmeta[kk]['medprice']}}</font> (Expected $ {{roadtripmeta[kk]['expected_med']}}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Miles on the road:  {{roadtripmeta[kk]['total_miles']}}
         <br>
 
-        Cost: <font color={{colors[kk]['med']}}>$ {{roadtripmeta[kk]['price']}}</font> (Expected $ {{roadtripmeta[kk]['expected_price']}})
-        <br>
-          <b>
-        Where it's coming from:
-      </b>
-        
+        Where it's coming from
         <br>
 
         <font color={{colors[kk]['loc']}}>{{roadtripmeta[kk]['loc_value']}}</font> (Choice of Stadiums) 
@@ -463,32 +349,26 @@ Pick your preferences:
         <font color={{colors[kk]['weather']}}>{{roadtripmeta[kk]['weather_value']}}</font> (Weather) 
         <br>
         <font color={{colors[kk]['day']}}>{{roadtripmeta[kk]['day_value']}}</font> (Day vs Night Games)
+
         <br>
+        
 
 
 
         <br>
         
-
-        <br><br>
-    </div>
-    </li>
-    <br>
-    <br>
-    <br>
-            <div class="container">
+        <div class="container">
         <form action="/outputsimilar" method="get">
           <div class="form-group">
             <input type="hidden" name="total_miles" value = {{roadtripmeta[kk]['total_miles']}}>
           </div>
           <div class="form-group">
-            <input type="hidden" name="quality_value" value = {{roadtripmeta[kk]['findme']}}>
+            <input type="hidden" name="quality_value" value = {{roadtripmeta[kk]['quality_value']}}>
           </div>
           <button type="submit" class="btn btn-primary">Find similar itineraries!</button>
         </form>
-    <br>
-    <br>
-    <br>
+        <br><br>
+    </div>
         {% endfor %}
       
 </center>
