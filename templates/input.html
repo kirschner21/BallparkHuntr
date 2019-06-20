@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Away Games</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+<style>
+ .main {
+ background-color: rgba(255, 255, 255, 0.5);
+ margin-top: 50px;
+ padding-bottom: 50px;
+ }
+ .main h1 {
+ font-size: 3.5em;
+ font-family: Arial;
+ color: #2E3759;
+ }
+ .main h2 {
+ font-size: 2em;
+ font-family: Arial;
+ color: #2E3759;
+ }
+ .main h3 {
+ font-size: 2em;
+ font-family: Arial;
+ color: #2E3759;
+ }
+ .main p {
+ font-size:1em;
+ font-family: Arial;
+ color: #2E3759;
+ }
+ul {
+  list-style-type: none;
+}
+li {
+  display: inline-block;
+}
+input[type='checkbox'] {
+    -webkit-appearance:none;
+    width:20px;
+    height:20px;
+    background:white;
+    border-radius:5px;
+    border:2px solid #555;
+}
+input[type='checkbox']:checked {
+    background: #27db42;
+}
+
+</style>
+
+BALLPARK HUNTR
+
+<br><br>
+<div class="container">
+        <form action="/output" method="get">
+          <div class="slidecontainer">
+            <label for="NumberofGames">Number of Games:</label>  <span id="demo"></span> 
+            <input type="range" name="numgames" class="slider" id="NumberofGames" min="2" max = "9"   value = "5">  
+            
+          <!---</div>
+          <div class="form-group"> -->
+            <label for="NumberofGamesImp">Importance</label>
+            <input type="range" name="numgamesimp" class="slider" id="NumberofGamesImp" min="0" max="100" value="50">
+          </div>
+
+          <div class="slidecontainer">
+            <label for="AverageTemperature">Desired Temperature: </label>  <span id="demo2"> </span>  F
+            <input type="range" name="avgtemp" class="slider" id="AverageTemperature" min="40" max = "90"   value = "50">  
+            
+          <!---</div>
+          <div class="form-group"> -->
+            <label for="AverageTemperatureImp">Importance</label>
+            <input type="range" name="avgtempimp" class="slider" id="AverageTemperatureImp" min="0" max="100" value="50">
+          </div>
+
+          <div class="form-group">
+            <label for="PercentDayGames">Percent Day Games</label>
+            <input type="range" name="daygames" class="slider" id="PercentDayGames" min = "0" max = "100" value = "50">
+          <!--</div>
+          <div class="form-group"> -->
+            <label for="PercentDayGamesImportance">Importance</label>
+            <input type="range" name="daygamesimp" class="slider" id="PercentDayGamesImportance" min = "0" max = "100" value = "50">
+          </div>
+          <div class="form-group">
+            <label for="QualityImportance">Which team would you rather be better?</label> Home
+            <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = "50"> Away
+          </div>
+          <div class="form-group">
+            <label for="DistanceImportance">How little do you want to travel?</label>
+            <input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = "50">
+          </div>
+
+          <div class="form-group">
+            <label for="MaxBudget">Max Budget?</label>
+            <input type="text" name="maxb" class="form-control" id="MaxBudget" placeholder=500 value = 500>
+          </div>
+          <li><label for = "check1"><input type="checkbox" name="loclist" value="oriole_park_at_camden_yards" id = "check1"   /> Baltimore Orioles </label></li>
+          <li><label for = "check2"><input type="checkbox" name="loclist" value="guaranteed_rate_field" id = "check2" /> Chicago White Sox </label></li>
+          <li><label for = "check3"><input type="checkbox" name="loclist" value="minute_maid_park" id = "check3" /> Houston Astros </label></li>
+          <li><label for = "check4"><input type="checkbox" name="example" value="ALT" id = "check4"/> Atlanta Braves </label></li>
+          <li><label for = "check5"><input type="checkbox" name="loclist" value="wrigley_field" id = "check5" /> Chicago Cubs </label></li>
+          <li><label for = "check6"><input type="checkbox" name="example" value="ARZ" id = "check6"/> Arizona Diamond Backs </label></li>
+          
+          <br>
+
+          <li><label for = "check7"><input type="checkbox" name="loclist" value="fenway_park" id = "check7" /> Boston Red Sox </label></li>
+          <li><label for = "check8"><input type="checkbox" name="loclist" value="progressive_field" id = "check8" /> Cleveland Indians </label></li>
+          <li><label for = "check9"><input type="checkbox" name="loclist" value="angels_stadium_of_anaheim" id = "check9" /> Los Angeles Angels </label></li>
+          <li><label for = "check10"><input type="checkbox" name="loclist" value="marlins_park" id = "check10" /> Miami Marlins </label></li>
+          <li><label for = "check11"><input type="checkbox" name="loclist" value="great_american_ball_park" id = "check11" /> Cincinnati Reds </label></li>
+          <li><label for = "check12"><input type="checkbox" name="example" value="COL" id = "check12"/> Colorado Rockies </label></li>
+          
+          <br>
+
+          <li><label for = "check13"><input type="checkbox" name="loclist" value="yankee_stadium" id = "check13" /> New York Yankees </label></li>
+          <li><label for = "check14"><input type="checkbox" name="loclist" value="comerica_park" id = "check14" /> Detroit Tigers </label></li>
+          <li><label for = "check15"><input type="checkbox" name="loclist" value="oac_coliseum" id = "check15" /> Oakland Athletics </label></li>
+          <li><label for = "check16"><input type="checkbox" name="loclist" value="citi_field" id = "check16" /> New York Mets </label></li>
+          <li><label for = "check17"><input type="checkbox" name="loclist" value="miller_park" id = "check17" /> Milwaukee Brewers </label></li>
+          <li><label for = "check18"><input type="checkbox" name="loclist" value="dodger_stadium" id = "check18" /> Los Angeles Dodgers </label></li>
+          
+          <br>
+
+          <li><label for = "check19"><input type="checkbox" name="loclist" value="tropicana_field" id = "check19" /> Tampa Bay Rays </label></li>
+          <li><label for = "check20"><input type="checkbox" name="loclist" value="kauffman_stadium" id = "check20" /> Kansas City Royals </label></li>
+          <li><label for = "check21"><input type="checkbox" name="example" value="MIA" id = "check21"/> Seattle Mariners </label></li>
+          <li><label for = "check22"><input type="checkbox" name="loclist" value="citizens_bank_park" id = "check22" /> Philadelphia Phillies </label></li>
+          <li><label for = "check23"><input type="checkbox" name="loclist" value="pnc_park" id = "check23" /> Pittsburgh Pirates </label></li>
+          <li><label for = "check24"><input type="checkbox" name="loclist" value="petco_park" id = "check24" /> San Diego Padres </label></li>
+          
+          <br>
+
+          <li><label for = "check25"><input type="checkbox" name="loclist" value="rogers_centre" id = "check25" /> Toronto Blue Jays </label></li>
+          <li><label for = "check26"><input type="checkbox" name="example" value="CLE" id = "check26"/> Minnesota Twins </label></li>
+          <li><label for = "check27"><input type="checkbox" name="loclist" value="globe_life_park_in_arlington" id = "check27" /> Texas Rangers </label></li>
+          <li><label for = "check28"><input type="checkbox" name="loclist" value="nationals_park" id = "check28" /> Washington Nationals </label></li>
+          <li><label for = "check29"><input type="checkbox" name="loclist" value="busch_stadium" id = "check29" /> St. Louis Cardinals </label></li>
+          <li><label for = "check30"><input type="checkbox" name="loclist" value="att_park" id = "check30"  /> San Francisco Giants </label></li>
+          
+          <br>
+
+
+          <button type="submit" class="btn btn-primary">Find me games!</button>         
+
+          <script>
+          var slider2 = document.getElementById("AverageTemperature");
+          var output2 = document.getElementById("demo2");
+          output2.innerHTML = slider2.value;
+          slider2.oninput = function() {
+          output2.innerHTML = this.value;
+          }
+         </script>
+         <script>
+          var slider = document.getElementById("NumberofGames");
+          var output = document.getElementById("demo");
+          output.innerHTML = slider.value;
+          slider.oninput = function() {
+          output.innerHTML = this.value;
+          }
+        </script>
+          
+        </form>
+    </div>
+  </div> <!-- /.container-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
