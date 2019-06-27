@@ -39,7 +39,7 @@ body {
   background-image: url("/static/retryheader2.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: #bbbbbb; 
+  background-color: #eeeeee; 
   font-family: Helvetica;
 }
  .main {
@@ -49,22 +49,22 @@ body {
  }
  .main h1 {
  font-size: 5em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
  .main h2 {
  font-size: 2em;
- font-family: Arial;
+ 
  color: #808080;
  }
  .main h3 {
  font-size: 2em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
  .main p {
  font-size:1em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
 ul {
@@ -99,12 +99,14 @@ input[type='checkbox']#try:checked {
     background: #000000;
 }
 table, th, td {
-  border: 1px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
+  
 }
 table#inputtable, td#input {
   border:none;
   vertical-align: middle;
+
 }
 img.resize {
   max-width:40%;
@@ -123,26 +125,43 @@ th, td {
 <br>
 <br>
 <br>
-<p style="font-size: 140px;font-family: Impact; color: #000000; font-style: bold;line-height: .85;text-shadow: 1px 1px #303030;">  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p style="font-size: 140px;font-family: Impact; color: #000000; font-style: bold;line-height: .85;text-shadow: 1px 1px #303030; margin: 0">  
 BALLPARK 
 <br>
 HUNTR
+<p style="font-size: 50px; color: #000000; font-style: italic;">  
+Plan your ideal MLB road trip</p>
 </p>
+
+
+
+<br>
 <p style="font-size: 50px;">
 Pick your preferences:
 </p>
 
-<br>
 
 <img src="/static/great2.jpg" align="right">
 
 
-<br><br>
+
 
 
 <div class="container">
         <form action="/output" method="get">
-          Which teams do you want to visit?
+          <font size="4">
+          <b>Which teams do you want to visit?</b>
+          <br>
+          <br>
+        </font>
            <table id = "inputtable">
           <tr >
           <td id = "input">
@@ -248,14 +267,19 @@ Pick your preferences:
 
       <br>
       <br>
+      <br>
+      
 
 
-
+  <font size="4">
+        <b>Other characteristics of your ideal trip:</b>
+        <br>
+        <br>
          <table id = "inputtable">
           <tr style="text-align:center">
           <td id = "input">
         
-            <label for="NumberofGames">How many games do you want to see?</label>
+            <label for="NumberofGames"><b>Number of games:</b></label>
             </td>
             <td id = "input">
             <span id="demo"></span> games  <br>
@@ -276,7 +300,7 @@ Pick your preferences:
 
           <tr style="text-align:center">
           <td id = "input">
-          <label for="AverageTemperature"> What do you want the average temperature to be? </label> 
+          <label for="AverageTemperature"><b> Average temperature: </b></label> 
           </td>
           <td id = "input">
            <span id="demo2"> </span>  F <br>
@@ -290,7 +314,7 @@ Pick your preferences:
         </tr>
         <tr style="text-align:center">
           <td id = "input">
-          <label for="PercentDayGames">What percent of days during the day do you want to see?</label>
+          <label for="PercentDayGames"><b>Percent day games:</b></label>
         </td>
           <td id = "input">
             <span id="demo3"></span>  % <br>
@@ -302,60 +326,60 @@ Pick your preferences:
           </td>
         </tr>
         <tr style="text-align:center">
-        <td id = "input" colspan="2"> 
-            <label for="DistanceImportance">How important is it that the trip is short?</label>
-          </td>
-          <td id="input" >
-            Importance? <br>
-            Low<input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = {{p['dimp']}}>High
-          </td>
-        </tr>
-        <tr style="text-align:center">
         <td id = "input" colspan="2">
-          <label for="QualityImportance">Which team would you rather be better?</label>
+          <br>
+          <label for="QualityImportance"><b>Better team:</b></label>
         </td>
         <td id = "input">
             <br>
-            Away  <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = {{p['qimp']}}> Home
+            Visiting  <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = {{p['qimp']}}> Home
+          </td>
+        </tr> 
+        <tr style="text-align:center">
+        <td id = "input" colspan="3"> 
+            <br>
+            <b>Importance of minimizing time on the road?</b> <br><br>
+            Low<input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = {{p['dimp']}}>High
           </td>
         </tr>
         
+        </table>
+        <br>
+        <br>
+        <table id="inputtable">
 
         <tr style="text-align:center">
-          <td id="input">
-            Would you rather get what you want or a good deal?
-          </td>
-
-          <td id="input">
-            Preferences<input type="range" name="pimp" class="slider" id="PreferencesImportance" min = "0" max = "100" value = {{p['pimp']}}>Deal
-          </td>
-
           <td id="input" >
-            <label for="MaxBudget">What's your maximum budget?</label>
-            <input type="text" name="maxb" class="form-control" id="MaxBudget" placeholder={{p['maxb']}} value = {{p['maxb']}}>
+            <label for="MaxBudget"><b>Maximum budget?</b></label>
+            <br>
+                    &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            <br>
+            <input type="text" style="font-size:16px;"" name="maxb" class="form-control" id="MaxBudget" placeholder={{p['maxb']}} value = {{p['maxb']}}>
           </td>
+          <td id="input" colspan="2">
+            Would you rather get your <b>ideal trip</b> or a <b>good deal</b>?
+          <br>
+          &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+          <br>
+            Ideal Trip<input type="range" name="pimp" class="slider" id="PreferencesImportance" min = "0" max = "100" value = {{p['pimp']}}>Good Deal
+          </td>
+          
 
-        </tr>
-
-
-        <tr style="text-align:center">
+        
           <td id="input">
-            Sort by median or lowest Price?
-            <br> <br>
+            Sort by <b>median</b> or <b>lowest</b> ticket price?
+            <br>
+            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            <br>
            Lowest <input type="range" name="try" class="slider" id="trying" min = "0" max = "1"  value = {{p['pricecheck']}}> Median
            
            
 
           </td>
-          <td id="input" colspan="2">
-            
-         <button type="submit" class="btn btn-primary">Find me games!</button>         
-
-          </td>
-
-        </tr>
+    
         </table>
-
+        <br>
+   <button type="submit" class="btn btn-primary"><font size="4">Find me games!</font></button> 
           
             
           <!---</div>
@@ -412,59 +436,60 @@ Pick your preferences:
         
         </form>
     </div>
+  </font>
 
 <div class="container">
       <div class="starter-template">
+        <font size="5">
         <h3>Results sorted by  value of {{p['pricing']}} priced tickets: </h3>
+      </font>
         <br>
       </div>
       
       {% for kk in range(0, length) %}
-             <li>   
+             
+             <font size="4"><li>   
         <table class="table table-hover" border: 10px" style="float: left">
-        
+        <tr style="text-align:center">
+          <td colspan="3"> <font size="5"><b>Itinerary #{{kk+1}}</b></font> <br> {{roadtripmeta[kk]['total_miles']}} Miles Between Games </td>
         <tr style="text-align:center"><th>Game</th><th>Date</th><th>Average <br> Temperature (F)</th></tr>
         
         <br>
         
         {% for birth in bigoutput[kk] %}
-        <tr style="text-align:center"><td>  <a href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
+        <tr style="text-align:center"><td>  <a style="text-decoration:none" href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
         {% endfor %}
         </table>
-
+      </font>
+        <font size="5">
           &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
 
           {% for line in range(0,roadtripmeta[kk]['total_games']-1) %}
           <br>
           {% endfor %}
           
-            <b>
-          Trip Info:
-        </b>
+                  
+<font size="6">
+        <b>Total Cost: <font color={{colors[kk]['med']}}>${{roadtripmeta[kk]['price']}}</font></b> (<i>${{roadtripmeta[kk]['expected_price']}} expected</i>)
+      </font>
         <br>
+        <br>  
+        What factors affect the price:
         <br>
-          
-        Miles on the road:  {{roadtripmeta[kk]['total_miles']}}
+        
         
         <br>
-
-        Cost: <font color={{colors[kk]['med']}}>$ {{roadtripmeta[kk]['price']}}</font> (Expected $ {{roadtripmeta[kk]['expected_price']}})
+        <b>
+        Choice of Stadiums: <font color={{colors[kk]['loc']}}>{{roadtripmeta[kk]['loc_value']}}</font>  
         <br>
-          <b>
-        Where it's coming from:
-      </b>
-        
+        Teams Playing: <font color={{colors[kk]['quality']}}>{{roadtripmeta[kk]['quality_value']}}</font>  
         <br>
-
-        <font color={{colors[kk]['loc']}}>{{roadtripmeta[kk]['loc_value']}}</font> (Choice of Stadiums) 
+        Weather: <font color={{colors[kk]['weather']}}>{{roadtripmeta[kk]['weather_value']}}</font>  
         <br>
-        <font color={{colors[kk]['quality']}}>{{roadtripmeta[kk]['quality_value']}}</font> (Teams Playing) 
+        Game Times: <font color={{colors[kk]['day']}}>{{roadtripmeta[kk]['day_value']}}</font>
         <br>
-        <font color={{colors[kk]['weather']}}>{{roadtripmeta[kk]['weather_value']}}</font> (Weather) 
-        <br>
-        <font color={{colors[kk]['day']}}>{{roadtripmeta[kk]['day_value']}}</font> (Day vs Night Games)
-        <br>
-
+      </font>
+    </b>
 
 
         <br>
@@ -484,13 +509,14 @@ Pick your preferences:
           <div class="form-group">
             <input type="hidden" name="quality_value" value = {{roadtripmeta[kk]['findme']}}>
           </div>
-          <button type="submit" class="btn btn-primary">Find similar itineraries!</button>
+          <button type="submit" class="btn btn-primary"><font size="4">Find similar itineraries!</font></button>
         </form>
     <br>
     <br>
     <br>
         {% endfor %}
-      
+      </div>
+    </font>
 </center>
 
      </div><!-- /.container -->

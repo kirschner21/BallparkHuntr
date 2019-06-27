@@ -39,7 +39,7 @@ body {
   background-image: url("/static/retryheader2.jpg");
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: #bbbbbb; 
+  background-color: #eeeeee; 
   font-family: Helvetica;
 }
  .main {
@@ -49,22 +49,22 @@ body {
  }
  .main h1 {
  font-size: 5em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
  .main h2 {
  font-size: 2em;
- font-family: Arial;
+ 
  color: #808080;
  }
  .main h3 {
  font-size: 2em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
  .main p {
  font-size:1em;
- font-family: Arial;
+ 
  color: #2E3759;
  }
 ul {
@@ -99,12 +99,14 @@ input[type='checkbox']#try:checked {
     background: #000000;
 }
 table, th, td {
-  border: 1px solid black;
+  border: 2px solid black;
   border-collapse: collapse;
+  
 }
 table#inputtable, td#input {
   border:none;
   vertical-align: middle;
+
 }
 img.resize {
   max-width:40%;
@@ -124,66 +126,86 @@ th, td {
 <br>
 <br>
 <br>
-<p style="font-size: 140px;font-family: Impact; color: #000000; font-style: bold;line-height: .85;text-shadow: 1px 1px #303030;">  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p style="font-size: 140px;font-family: Impact; color: #000000; font-style: bold;line-height: .85;text-shadow: 1px 1px #303030; margin: 0">  
 BALLPARK 
 <br>
 HUNTR
+<p style="font-size: 50px; color: #000000; font-style: italic;">  
+Plan your ideal MLB road trip</p>
 </p>
-
+<br>
+<br>
+<br>
 <div class="container">
       <div class="starter-template">
-        <h3>Possible Road Trips ({{roadtripmeta[0]['total_miles']}} miles long):
-        <br>
-        
+        <font size="5">
+        <h3>Possible Road Trips ({{roadtripmeta[0]['total_miles']}} Miles Between Games): </h3>
+      </font>
         <br>
       </div>
       
       {% for kk in range(0, length) %}
-             <li>   
+             
+             <font size="4"><li>   
         <table class="table table-hover" border: 10px" style="float: left">
-        
+        <tr style="text-align:center">
+          <td colspan="3"> <font size="5"><b>Itinerary #{{kk+1}}</b></font> <br>  </td>
         <tr style="text-align:center"><th>Game</th><th>Date</th><th>Average <br> Temperature (F)</th></tr>
         
         <br>
         
         {% for birth in bigoutput[kk] %}
-        <tr style="text-align:center"><td>  <a href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
+        <tr style="text-align:center"><td>  <a style="text-decoration:none" href={{birth['url']}}>  {{ birth['awayteam']}} ({{birth['awaywin']}} - {{birth['awayloss']}}) <br> at <br> {{ birth['hometeam'] }} ({{birth['homewin']}} - {{birth['homeloss']}}) </a> </td><td> {{ birth['date2'] }}</td><td> {{birth['tavg']}} </td> </tr>
         {% endfor %}
         </table>
-
+      </font>
+        <font size="5">
           &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
 
           {% for line in range(0,roadtripmeta[kk]['total_games']) %}
           <br>
           {% endfor %}
           
-        <br>
-        <br>
-          
+                    <b> <font size="6">
+          Cost:
         
-        
-        <br>
-
-        <b>
-          Price:
-        </b>
         <br>
         ${{roadtripmeta[kk]['lowprice']}} (Lowest) 
         <br>
-        ${{roadtripmeta[kk]['medprice']}} (Median)
+        ${{roadtripmeta[kk]['medprice']}} (Median)      
+      </font>
+      </b>
+      </font>
+
+
+
+        <br>
         
+
+        <br><br>
     </div>
     </li>
+
+        <br>
     <br>
     <br>
     <br>
     <br>
     <br>
-    <br>
+
         {% endfor %}
+      
       <div class="container">
         <form action="/input" method="get">
-         <button type="submit" class="btn btn-primary">Find a new trip</button>         
+         <button type="submit" class="btn btn-primary"><font size="4">Find a new trip</font></button>         
 
          
     </div>

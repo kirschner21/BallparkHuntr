@@ -158,111 +158,109 @@ Pick your preferences:
 <div class="container">
         <form action="/output" method="get">
           <font size="4">
-            <b>
-          Which teams do you want to visit?
-        </b>
+          <b>Which teams do you want to visit?</b>
           <br>
           <br>
         </font>
            <table id = "inputtable">
           <tr >
           <td id = "input">
-          <li><label for = "check1"><input type="checkbox" name="loclist" value="oriole_park_at_camden_yards" id = "check1" /> Baltimore Orioles </label></li>
+          <li><label for = "check1"><input type="checkbox" name="loclist" value="oriole_park_at_camden_yards" id = "check1"  {{locdic['oriole_park_at_camden_yards']}} /> Baltimore Orioles </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check2"><input type="checkbox" name="loclist" value="guaranteed_rate_field" id = "check2" /> Chicago White Sox </label></li>
+          <li><label for = "check2"><input type="checkbox" name="loclist" value="guaranteed_rate_field" id = "check2" {{locdic['guaranteed_rate_field']}}/> Chicago White Sox </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check3"><input type="checkbox" name="loclist" value="minute_maid_park" id = "check3" /> Houston Astros </label></li>
+          <li><label for = "check3"><input type="checkbox" name="loclist" value="minute_maid_park" id = "check3" {{locdic['minute_maid_park']}}/> Houston Astros </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check4"><input type="checkbox" name="example" value="ALT" id = "check4" /> Atlanta Braves </label></li>
+          <li><label for = "check4"><input type="checkbox" name="example" value="ALT" id = "check4" {{locdic['ALT']}}/> Atlanta Braves </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check5"><input type="checkbox" name="loclist" value="wrigley_field" id = "check5" /> Chicago Cubs </label></li>
+          <li><label for = "check5"><input type="checkbox" name="loclist" value="wrigley_field" id = "check5" {{locdic['wrigley_field']}}/> Chicago Cubs </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check6"><input type="checkbox" name="example" value="ARZ" id = "check6" /> Arizona Diamond Backs </label></li>
+          <li><label for = "check6"><input type="checkbox" name="example" value="ARZ" id = "check6" {{locdic['ARZ']}}/> Arizona Diamond Backs </label></li>
           </td>
           </tr>
           <tr  >
           <td id = "input">
-          <li><label for = "check7"><input type="checkbox" name="loclist" value="fenway_park" id = "check7" /> Boston Red Sox </label></li>
+          <li><label for = "check7"><input type="checkbox" name="loclist" value="fenway_park" id = "check7" {{locdic['fenway_park']}}/> Boston Red Sox </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check8"><input type="checkbox" name="loclist" value="progressive_field" id = "check8" /> Cleveland Indians </label></li>
+          <li><label for = "check8"><input type="checkbox" name="loclist" value="progressive_field" id = "check8" {{locdic['progressive_field']}}/> Cleveland Indians </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check9"><input type="checkbox" name="loclist" value="angels_stadium_of_anaheim" id = "check9" /> Los Angeles Angels </label></li>
+          <li><label for = "check9"><input type="checkbox" name="loclist" value="angels_stadium_of_anaheim" id = "check9" {{locdic['angels_stadium_of_anaheim']}}/> Los Angeles Angels </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check10"><input type="checkbox" name="loclist" value="marlins_park" id = "check10" /> Miami Marlins </label></li>
+          <li><label for = "check10"><input type="checkbox" name="loclist" value="marlins_park" id = "check10" {{locdic['marlins_park']}}/> Miami Marlins </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check11"><input type="checkbox" name="loclist" value="great_american_ball_park" id = "check11" /> Cincinnati Reds </label></li>
+          <li><label for = "check11"><input type="checkbox" name="loclist" value="great_american_ball_park" id = "check11" {{locdic['great_american_ball_park']}}/> Cincinnati Reds </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check12"><input type="checkbox" name="example" value="COL" id = "check12" /> Colorado Rockies </label></li>
-          </td>
-          </tr>
-          <tr >
-          <td id = "input">
-          <li><label for = "check13"><input type="checkbox" name="loclist" value="yankee_stadium" id = "check13" /> New York Yankees </label></li>
-          </td>
-          <td id = "input">
-          <li><label for = "check14"><input type="checkbox" name="loclist" value="comerica_park" id = "check14" /> Detroit Tigers </label></li>
-          </td>
-          <td id = "input">
-          <li><label for = "check15"><input type="checkbox" name="loclist" value="oac_coliseum" id = "check15" /> Oakland Athletics </label></li>
-          </td>
-          <td id = "input">
-          <li><label for = "check16"><input type="checkbox" name="loclist" value="citi_field" id = "check16" /> New York Mets </label></li>
-          </td>
-          <td id = "input">
-          <li><label for = "check17"><input type="checkbox" name="loclist" value="miller_park" id = "check17" /> Milwaukee Brewers </label></li>
-          </td>
-          <td id = "input">
-          <li><label for = "check18"><input type="checkbox" name="loclist" value="dodger_stadium" id = "check18" /> Los Angeles Dodgers </label></li>
+          <li><label for = "check12"><input type="checkbox" name="example" value="COL" id = "check12" {{locdic['COL']}}/> Colorado Rockies </label></li>
           </td>
           </tr>
           <tr >
           <td id = "input">
-          <li><label for = "check19"><input type="checkbox" name="loclist" value="tropicana_field" id = "check19" /> Tampa Bay Rays </label></li>
+          <li><label for = "check13"><input type="checkbox" name="loclist" value="yankee_stadium" id = "check13" {{locdic['yankee_stadium']}}/> New York Yankees </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check20"><input type="checkbox" name="loclist" value="kauffman_stadium" id = "check20" /> Kansas City Royals </label></li>
+          <li><label for = "check14"><input type="checkbox" name="loclist" value="comerica_park" id = "check14" {{locdic['comerica_park']}}/> Detroit Tigers </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check21"><input type="checkbox" name="example" value="SEA" id = "check21" /> Seattle Mariners </label></li>
+          <li><label for = "check15"><input type="checkbox" name="loclist" value="oac_coliseum" id = "check15" {{locdic['oac_coliseum']}}/> Oakland Athletics </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check22"><input type="checkbox" name="loclist" value="citizens_bank_park" id = "check22"/> Philadelphia Phillies </label></li>
+          <li><label for = "check16"><input type="checkbox" name="loclist" value="citi_field" id = "check16" {{locdic['citi_field']}}/> New York Mets </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check23"><input type="checkbox" name="loclist" value="pnc_park" id = "check23" /> Pittsburgh Pirates </label></li>
+          <li><label for = "check17"><input type="checkbox" name="loclist" value="miller_park" id = "check17" {{locdic['miller_park']}}/> Milwaukee Brewers </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check24"><input type="checkbox" name="loclist" value="petco_park" id = "check24" /> San Diego Padres </label></li>
+          <li><label for = "check18"><input type="checkbox" name="loclist" value="dodger_stadium" id = "check18" {{locdic['dodger_stadium']}}/> Los Angeles Dodgers </label></li>
           </td>
           </tr>
           <tr >
           <td id = "input">
-          <li><label for = "check25"><input type="checkbox" name="loclist" value="rogers_centre" id = "check25" /> Toronto Blue Jays </label></li>
+          <li><label for = "check19"><input type="checkbox" name="loclist" value="tropicana_field" id = "check19" {{locdic['tropicana_field']}}/> Tampa Bay Rays </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check26"><input type="checkbox" name="example" value="MIN" id = "check26" /> Minnesota Twins </label></li>
+          <li><label for = "check20"><input type="checkbox" name="loclist" value="kauffman_stadium" id = "check20" {{locdic['kauffman_stadium']}}/> Kansas City Royals </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check27"><input type="checkbox" name="loclist" value="globe_life_park_in_arlington" id = "check27"/> Texas Rangers </label></li>
+          <li><label for = "check21"><input type="checkbox" name="example" value="SEA" id = "check21" {{locdic['SEA']}}/> Seattle Mariners </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check28"><input type="checkbox" name="loclist" value="nationals_park" id = "check28" /> Washington Nationals </label></li>
+          <li><label for = "check22"><input type="checkbox" name="loclist" value="citizens_bank_park" id = "check22" {{locdic['citizens_bank_park']}}/> Philadelphia Phillies </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check29"><input type="checkbox" name="loclist" value="busch_stadium" id = "check29" /> St. Louis Cardinals </label></li>
+          <li><label for = "check23"><input type="checkbox" name="loclist" value="pnc_park" id = "check23" {{locdic['pnc_park']}}/> Pittsburgh Pirates </label></li>
           </td>
           <td id = "input">
-          <li><label for = "check30"><input type="checkbox" name="loclist" value="att_park" id = "check30"  /> San Francisco Giants </label></li>
+          <li><label for = "check24"><input type="checkbox" name="loclist" value="petco_park" id = "check24" {{locdic['petco_park']}}/> San Diego Padres </label></li>
+          </td>
+          </tr>
+          <tr >
+          <td id = "input">
+          <li><label for = "check25"><input type="checkbox" name="loclist" value="rogers_centre" id = "check25" {{locdic['rogers_centre']}}/> Toronto Blue Jays </label></li>
+          </td>
+          <td id = "input">
+          <li><label for = "check26"><input type="checkbox" name="example" value="MIN" id = "check26" {{locdic['MIN']}}/> Minnesota Twins </label></li>
+          </td>
+          <td id = "input">
+          <li><label for = "check27"><input type="checkbox" name="loclist" value="globe_life_park_in_arlington" id = "check27" {{locdic['globe_life_park_in_arlington']}}/> Texas Rangers </label></li>
+          </td>
+          <td id = "input">
+          <li><label for = "check28"><input type="checkbox" name="loclist" value="nationals_park" id = "check28" {{locdic['nationals_park']}}/> Washington Nationals </label></li>
+          </td>
+          <td id = "input">
+          <li><label for = "check29"><input type="checkbox" name="loclist" value="busch_stadium" id = "check29" {{locdic['busch_stadium']}}/> St. Louis Cardinals </label></li>
+          </td>
+          <td id = "input">
+          <li><label for = "check30"><input type="checkbox" name="loclist" value="att_park" id = "check30" {{locdic['att_park']}} /> San Francisco Giants </label></li>
           </td>
         </tr>
       </table>
@@ -270,8 +268,9 @@ Pick your preferences:
       <br>
       <br>
       <br>
+      
 
-  
+
   <font size="4">
         <b>Other characteristics of your ideal trip:</b>
         <br>
@@ -284,7 +283,7 @@ Pick your preferences:
             </td>
             <td id = "input">
             <span id="demo"></span> games  <br>
-            <input type="range" name="numgames" class="slider" id="NumberofGames" min="2" max = "9"   value = "5">  
+            <input type="range" name="numgames" class="slider" id="NumberofGames" min="2" max = "9"   value = {{p['numgames']}}>  
           </td>
         
            <td id = "input">
@@ -292,7 +291,7 @@ Pick your preferences:
           <!---</div>
           <div class="form-group"> -->
             <label for="NumberofGamesImp">Importance?</label><br>
-           Low <input type="range" name="numgamesimp" class="slider" id="NumberofGamesImp" min="0" max="100" value="50"> High
+           Low <input type="range" name="numgamesimp" class="slider" id="NumberofGamesImp" min="0" max="100" value={{p['numgamesimp']}}> High
           
         </td>
       
@@ -305,12 +304,12 @@ Pick your preferences:
           </td>
           <td id = "input">
            <span id="demo2"> </span>  F <br>
-            <input type="range" name="avgtemp" class="slider" id="AverageTemperature" min="55" max = "85"   value = "70">  
+            <input type="range" name="avgtemp" class="slider" id="AverageTemperature" min="55" max = "85"   value = {{p['avgtemp']}}>  
           </td>
           <td id = "input">
           
             <label for="AverageTemperatureImp">Importance?</label> <br>
-            Low<input type="range" name="avgtempimp" class="slider" id="AverageTemperatureImp" min="0" max="100" value="50">High
+            Low<input type="range" name="avgtempimp" class="slider" id="AverageTemperatureImp" min="0" max="100" value={{p['avgtempimp']}}>High
           </td>
         </tr>
         <tr style="text-align:center">
@@ -319,11 +318,11 @@ Pick your preferences:
         </td>
           <td id = "input">
             <span id="demo3"></span>  % <br>
-            <input type="range" name="daygames" class="slider" id="PercentDayGames" min = "0" max = "100" value = "50">
+            <input type="range" name="daygames" class="slider" id="PercentDayGames" min = "0" max = "100" value = {{p['daygames']}}>
           </td>
           <td id = "input">
           <label for="PercentDayGamesImportance">Importance?</label> <br>
-            Low<input type="range" name="daygamesimp" class="slider" id="PercentDayGamesImportance" min = "0" max = "100" value = "50">High
+            Low<input type="range" name="daygamesimp" class="slider" id="PercentDayGamesImportance" min = "0" max = "100" value = {{p['daygamesimp']}}>High
           </td>
         </tr>
         <tr style="text-align:center">
@@ -333,14 +332,14 @@ Pick your preferences:
         </td>
         <td id = "input">
             <br>
-            Visiting  <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = "50"> Home
+            Visiting  <input type="range" name="qimp" class="slider" id="QualityImportance" min = "0" max = "100"  value = {{p['qimp']}}> Home
           </td>
         </tr> 
         <tr style="text-align:center">
         <td id = "input" colspan="3"> 
             <br>
             <b>Importance of minimizing time on the road?</b> <br><br>
-            Low<input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = "50">High
+            Low<input type="range" name="dimp" class="slider" id="DistanceImportance" min = "0" max = "100" value = {{p['dimp']}}>High
           </td>
         </tr>
         
@@ -355,14 +354,14 @@ Pick your preferences:
             <br>
                     &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
             <br>
-            <input type="text" style="font-size:16px;"" name="maxb" class="form-control" id="MaxBudget" placeholder="500" value = "500">
+            <input type="text" style="font-size:16px;"" name="maxb" class="form-control" id="MaxBudget" placeholder={{p['maxb']}} value = {{p['maxb']}}>
           </td>
           <td id="input" colspan="2">
             Would you rather get your <b>ideal trip</b> or a <b>good deal</b>?
           <br>
           &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
           <br>
-            Ideal Trip<input type="range" name="pimp" class="slider" id="PreferencesImportance" min = "0" max = "100" value = "50">Good Deal
+            Ideal Trip<input type="range" name="pimp" class="slider" id="PreferencesImportance" min = "0" max = "100" value = {{p['pimp']}}>Good Deal
           </td>
           
 
@@ -372,7 +371,7 @@ Pick your preferences:
             <br>
             &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
             <br>
-           Lowest <input type="range" name="try" class="slider" id="trying" min = "0" max = "1"  value = "1"> Median
+           Lowest <input type="range" name="try" class="slider" id="trying" min = "0" max = "1"  value = {{p['pricecheck']}}> Median
            
            
 
@@ -383,6 +382,25 @@ Pick your preferences:
    <button type="submit" class="btn btn-primary"><font size="4">Find me games!</font></button> 
           
             
+          <!---</div>
+          <div class="form-group"> -->
+          
+
+         
+          <!--</div>
+          <div class="form-group"> -->
+            
+          
+        <!--
+          <div class="form-group">
+            <label for="MinTemperature">Minimum Temperature?</label>
+            <input type="text" name="mintemp" class="form-control" id="MinTemperature" placeholder={{p['mintemp']}} value = {{p['mintemp']}}>
+          </div>
+          <div class="form-group">
+            <label for="MaxTemperature">Maximum Temperature?</label>
+            <input type="text" name="maxtemp" class="form-control" id="MaxTemperature" placeholder={{p['maxtemp']}} value = {{p['maxtemp']}}>
+          </div>
+        -->
 
           <br>
           <br>
@@ -419,9 +437,14 @@ Pick your preferences:
         </form>
     </div>
   </font>
-
-
-
+<div class="container">
+      <div class="starter-template">
+        <font size="5">
+        <h3> No games found (your budget is too low) </h3>
+        </font>
+        </div>
+      </div>
+      
 </center>
 
      </div><!-- /.container -->
